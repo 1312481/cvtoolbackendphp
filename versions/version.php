@@ -7,18 +7,28 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     
     // get database connection
-    include_once '../config/database.php';
-    include_once '../objects/cv.php';
-    
-    $database = new Database();
-    $db = $database->getConnection();
-    
-    $user = new CV($db);
+
+    include_once '../file/upload.php';
+
+
+    $upload = new File();
     
     // get posted data
-    $data = json_decode(file_get_contents("php://input"));
-    echo json_encode($data);
+
+
+    $upload->addResource();
+    echo '{';
+        echo '"Message": "Success"';
+    echo '}';
+
+    // if($user->cv($data->user)){
+    //     echo json_encode('sucesss');
+    // }
+    // else {
+    //     echo json_encode('failed');
+    // }
+
     // var_dump($data);
-    // $user->cv($data);
+  
   
 ?>
