@@ -31,6 +31,7 @@
             break;
         case 'success':
         # code...
+       
             echo json_encode('success');
             break;
         default:

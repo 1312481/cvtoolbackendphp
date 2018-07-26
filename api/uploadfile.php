@@ -9,17 +9,21 @@
     // get database connection
 
     include_once '../file/upload.php';
-
+    
 
     $upload = new File();
     
     // get posted data
 
 
-    $upload->addResource();
-    echo '{';
-        echo '"Message": "Success"';
-    echo '}';
+    if($upload->addResource()){
+        echo json_encode("Upload Success");
+    }   
+    else{
+        echo json_encode("Upload Fail");
+    }
+
+
 
     // if($user->cv($data->user)){
     //     echo json_encode('sucesss');
