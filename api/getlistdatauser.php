@@ -17,7 +17,7 @@
     $task = array();
     $result= $user->cv($idUser);
     for ((int) $i = 0; $i < count($result); $i++){
-        $file_name= $result[$i]["versionname"].'.json';
+        $file_name= $idUser.$result[$i]["versionname"].'.json';
         $path = '../resources/' . $file_name;
         $file = file_get_contents($path, FILE_USE_INCLUDE_PATH);
  
@@ -29,7 +29,7 @@
     }
    
 
-    sleep(3);
+    // sleep(2);
     echo json_encode($task);
 
 ?>

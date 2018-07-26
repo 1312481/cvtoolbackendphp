@@ -14,24 +14,25 @@
 
     $user = new CV($db);
     $data = json_decode(file_get_contents("php://input"));
-   
-    switch ($user->json($data)) {
-        case 'fail insert nashuser':
+    switch ($user->changeTagName($data)) {
+        case 'fail select nashuser1':
         
             # code...
-            echo json_encode('fail insert nashuser');
+            echo json_encode('fail insert nashuser1');
             break;
-        case 'fail select nashuser':
+        case 'fail select nashuser2':
         # code...
-            echo json_encode('fail select nashuser');
+            echo json_encode('fail select nashuser2');
             break;
         case 'fail insert json':
         # code...
             echo json_encode('fail insert json');
             break;
         case 'success':
-        # code...
-           
+            # code...
+            $oldnamefile = "../resources/".$data->user.$data->tagname.".json";
+            $newnamefile = "../resources/".$data->user.$data->data.".json";
+            rename($oldnamefile,$newnamefile);
             echo json_encode('success');
             break;
         default:
