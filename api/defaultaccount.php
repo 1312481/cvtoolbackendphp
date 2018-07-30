@@ -14,8 +14,14 @@
 
     $user = new CV($db);
     $data = json_decode(file_get_contents("php://input"));
-   
-    switch ($user->json($data)) {
+
+    $file_name= '../resources/default.json';
+    $file = file_get_contents($file_name, FILE_USE_INCLUDE_PATH);
+    $new_file = '../resources/'.$data->user.$data->tagname.'.json';
+    file_put_contents($new_file, $file);
+
+
+    switch ($user->cv($data)) {
         case 'fail insert nashuser':
         
             # code...
@@ -31,11 +37,12 @@
             break;
         case 'success':
         # code...
-           
+       
             echo json_encode('success');
             break;
         default:
              echo json_encode('unknown error');
             break;
     }
-    ?>
+ 
+?>

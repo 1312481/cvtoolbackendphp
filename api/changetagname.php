@@ -39,3 +39,4 @@
              echo json_encode('unknown error');
             break;
     }
+    ?>
